@@ -46,6 +46,16 @@
   &.admin {
     float: right;
     color: #80bdff;
+    font-size: 20px;
+    margin: 18px 10px;
+
+    &:hover {
+      color: #ccdff9;
+    }
+  }
+
+  &.log-in {
+    margin-right: 0;
   }
   
   &:after {
