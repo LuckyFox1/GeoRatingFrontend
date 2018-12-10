@@ -19,3 +19,22 @@ body {
 *:after {
   box-sizing: inherit;
 }
+
+div {
+  box-sizing: content-box;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: initial;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -1,8 +1,56 @@
+.header {
+  width: 100%;
+  background: linear-gradient(to bottom, #3f2891 0, #563eaa 100%);
+
+  .title {
+    font-size: 30px;
+    line-height: 62px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+    color: #80bdff;
+    float: left;
+  }
+}
+
+.wrapper {
+  max-width: 1248px;
+  height: 68px;
+  margin: 0 auto;
+  padding: 5px 15px;
+  box-sizing: content-box;
+}
+
 .page-layout__viewport {
   padding-top: 4rem;
 }
 
-.page-layout__nav-item--active {
-  font-weight: bold;
-  text-decoration: underline;
+.nav-item {
+
+  &.home {
+    float: left;
+    line-height: 0;
+    color: #80bdff;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 61px;
+      height: 68px;
+      background: url("../assets/top-metcasts-logo.png") top left no-repeat;
+      background-size: cover;
+    }
+  }
+  
+  &.log-in,
+  &.admin {
+    float: right;
+    color: #80bdff;
+  }
+  
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
