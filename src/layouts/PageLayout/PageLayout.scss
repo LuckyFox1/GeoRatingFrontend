@@ -14,7 +14,7 @@
 }
 
 .wrapper {
-  max-width: 1248px;
+  max-width: 1100px;
   height: 68px;
   margin: 0 auto;
   padding: 5px 15px;
@@ -43,7 +43,8 @@
   }
   
   &.log-in,
-  &.admin {
+  &.admin,
+  &.sign-up {
     float: right;
     color: #80bdff;
     font-size: 20px;
@@ -54,7 +55,7 @@
     }
   }
 
-  &.log-in {
+  &.sign-up {
     margin-right: 0;
   }
   

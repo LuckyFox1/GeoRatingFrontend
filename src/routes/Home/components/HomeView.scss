@@ -1,5 +1,44 @@
-.duck {
-  display: block;
-  width: 120px;
-  margin: 1.5rem auto;
+.metcasts-list {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #3f2891;
+
+  .metcast {
+    height: 100px;
+    border-radius: 5px;
+    border: 2px solid #80bdff;
+    margin-top: 20px;
+    background-color: rgba(220, 235, 255, 0.46);
+
+    .left-col,
+    .right-col {
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    .left-col {
+      height: 100%;
+      width: 16.8%;
+      box-sizing: border-box;
+      padding: 10px;
+
+      .icon {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .right-col {
+      height: 100%;
+      width: 83.2%;
+
+      .name {
+        font-weight: bold;
+        font-size: 23px;
+      }
+    }
+  }
 }

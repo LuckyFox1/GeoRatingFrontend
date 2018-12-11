@@ -1,0 +1,2 @@
+export const SET_METCASTS = 'SET_METCASTS'
+export const GET_METCASTS = 'GET_METCASTS'
