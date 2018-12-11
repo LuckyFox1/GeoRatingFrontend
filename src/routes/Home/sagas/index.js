@@ -4,7 +4,7 @@ import {isLoggedIn, setMetcasts} from '../actions'
 import { BASE_URL } from '../../../constants'
 
 function * getMetcasts () {
-  const resp = yield call(fetch, `${BASE_URL}/metcasts`, { method: 'GET' })
+  const resp = yield call(fetch, `/metcasts`, { method: 'GET' })
   const json = yield call([resp, 'json'])
   yield put(setMetcasts(json))
 }

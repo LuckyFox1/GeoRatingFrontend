@@ -10,7 +10,7 @@ export class Home extends Component {
   }
 
   render () {
-    const { home } = this.props
+    const { home, setUser } = this.props
     return <div>
       <Header loggedIn={home.loggedIn} showLogInForm={this.props.showLogInForm} />
       <ul className='metcasts-list'>
@@ -34,7 +34,12 @@ export class Home extends Component {
       </ul>
       {
         home.showLoginForm
-        ? <Login showLogInForm={this.props.showLogInForm} /> : ''
+        ? <Login
+          showLogInForm={this.props.showLogInForm}
+          loginUser={this.props.loginUser}
+          registerUser={this.props.registerUser}
+          setUser={setUser}
+          /> : ''
       }
     </div>
   }
@@ -43,7 +48,9 @@ export class Home extends Component {
 Home.propTypes = {
   getMetcasts: PropTypes.func,
   home: PropTypes.object,
-  showLogInForm: PropTypes.func
+  showLogInForm: PropTypes.func,
+  loginUser: PropTypes.func,
+  registerUser: PropTypes.func
 }
 
 export default Home

@@ -46,11 +46,11 @@
     .alert-message {
       color: red;
       font-size: 14px;
-      display: none;
+    }
 
-      .show {
-        display: block;
-      }
+    .success-message {
+      color: #5cdc0f;
+      font-size: 14px;
     }
   }
 

@@ -3,12 +3,50 @@ import PropTypes from 'prop-types'
 import './Login.scss'
 
 class Login extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      error: false,
+      message: ''
+    }
+  }
+
   login = () => {
-    this.props.loginUser(this.refs.name.value, this.refs.password.value)
+    fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify({ user: { name: this.refs.name.value, password: this.refs.password.value } }),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => response.json())
+      .then(data => {
+        if (data.user) {
+          this.props.setUser(data.user)
+          this.setState({ error: false, message: '' })
+          this.props.showLogInForm(false)
+        } else {
+          this.setState({ error: true, message: 'Username or password is invalid.' })
+        }
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
   register = () => {
-    this.props.registerUser(this.refs.name.value, this.refs.password.value)
+    fetch('/register', {
+      method: 'POST',
+      body: JSON.stringify({ user: { name: this.refs.name.value, password: this.refs.password.value } }),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => response.json())
+      .then(data => {
+        if (data.user) {
+          this.setState({ error: false, message: 'Account was successfully created' })
+          this.refs.name.value = ''
+          this.refs.password.value = ''
+        } else {
+          this.setState({ error: true, message: data.message })
+        }
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
   render () {
@@ -20,14 +58,16 @@ class Login extends Component {
         <div className='login-form'>
           <div className='name-field'>
             <div className='message-box'>
-              <span className='alert-message'>Login is invalid</span>
+              {this.state.error ? <span className='alert-message'>{this.state.message}</span> : ''}
+              {!this.state.error && this.state.message.length
+                ? <span className='success-message'>{this.state.message}</span> : ''}
             </div>
             <label className='name-label'>Username: </label>
-            <input className='name-input' ref='password' type='text' />
+            <input className='name-input' ref='name' type='text' />
           </div>
           <div className='password-field'>
             <label className='password-label'>Password: </label>
-            <input className='password-input' ref='name' type='text' />
+            <input className='password-input' ref='password' type='text' />
           </div>
         </div>
         <button className='btn' onClick={this.login}>Sing In</button>
@@ -40,7 +80,7 @@ class Login extends Component {
 Login.propTypes = {
   login: PropTypes.object,
   home: PropTypes.object,
-  loginUser: PropTypes.func,
+  setUser: PropTypes.func,
   registerUser: PropTypes.func,
   showLogInForm: PropTypes.func
 }
