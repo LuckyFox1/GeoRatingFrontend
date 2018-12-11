@@ -21,14 +21,10 @@ export class Home extends Component {
               </div>
               <div className='right-col'>
                 <div className='name'>{ item.name }</div>
-                <a className='link' url={item.link}>{item.link}</a>
+                <a className='link' href={`//${item.url}`}>{item.url}</a>
                 <div className='rating'>
-                  <img className='rating-overlay' src='' alt='' />
-                  <span className='star star-1' />
-                  <span className='star star-2' />
-                  <span className='star star-3' />
-                  <span className='star star-4' />
-                  <span className='star star-5' />
+                  <div className='rating-icon' />
+                  <span className='rating-value'>{item.rating}</span>
                 </div>
               </div>
             </li>
