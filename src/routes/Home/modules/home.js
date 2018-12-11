@@ -13,6 +13,24 @@ const ACTION_HANDLERS = {
       ...state,
       metcasts: action.payload.metcasts
     }
+  },
+  [actionTypes.IS_LOGGED_IN]: (state, action) => {
+    return {
+      ...state,
+      loggedIn: action.payload.loggedIn
+    }
+  },
+  [actionTypes.SET_USER]: (state, action) => {
+    return {
+      ...state,
+      user: action.payload.user
+    }
+  },
+  [actionTypes.SHOW_LOGIN_FORM]: (state, action) => {
+    return {
+      ...state,
+      showLoginForm: action.payload.show
+    }
   }
 }
 
@@ -20,6 +38,9 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
+  loggedIn: false,
+  user: {},
+  showLoginForm: false,
   metcasts: []
 }
 export default function homeReducer (state = initialState, action) {

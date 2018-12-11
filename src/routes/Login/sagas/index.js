@@ -1,13 +1,9 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import * as actionTypes from '../constants/actionTypes'
-import {isLoggedIn, setMetcasts} from '../actions'
-import { BASE_URL } from '../../../constants'
+import { setUser } from '../actions'
+import { isLoggedIn } from '../../Home/actions'
 
-function * getMetcasts () {
-  const resp = yield call(fetch, `${BASE_URL}/metcasts`, { method: 'GET' })
-  const json = yield call([resp, 'json'])
-  yield put(setMetcasts(json))
-}
+// import { BASE_URL } from '../../../constants'
 
 function * login (action) {
   yield console.log(action)
@@ -40,7 +36,6 @@ function * register (action) {
 }
 
 export default function * home () {
-  yield takeEvery(actionTypes.GET_METCASTS, getMetcasts)
   yield takeEvery(actionTypes.LOGIN_USER, login)
   yield takeEvery(actionTypes.REGISTER_USER, register)
 }

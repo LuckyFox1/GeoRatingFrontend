@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './HomeView.scss'
 import Header from '../../../layouts/Header'
+import Login from './Login'
 
 export class Home extends Component {
   componentDidMount () {
@@ -11,7 +12,7 @@ export class Home extends Component {
   render () {
     const { home } = this.props
     return <div>
-      <Header />
+      <Header loggedIn={home.loggedIn} showLogInForm={this.props.showLogInForm} />
       <ul className='metcasts-list'>
         {
           home.metcasts.map(item => {
@@ -31,13 +32,18 @@ export class Home extends Component {
           })
         }
       </ul>
+      {
+        home.showLoginForm
+        ? <Login showLogInForm={this.props.showLogInForm} /> : ''
+      }
     </div>
   }
 }
 
 Home.propTypes = {
   getMetcasts: PropTypes.func,
-  home: PropTypes.object
+  home: PropTypes.object,
+  showLogInForm: PropTypes.func
 }
 
 export default Home
