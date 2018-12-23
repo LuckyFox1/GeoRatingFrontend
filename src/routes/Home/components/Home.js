@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './HomeView.scss'
 import Header from '../../../layouts/Header'
 import Login from './Login'
+import Metcast from './Metcast'
 
 export class Home extends Component {
   componentDidMount () {
@@ -10,25 +11,13 @@ export class Home extends Component {
   }
 
   render () {
-    const { home, setUser, signOut } = this.props
+    const { home, setUser, signOut, vote, removeVote } = this.props
     return <div>
       <Header user={home.user} signOut={signOut} showLogInForm={this.props.showLogInForm} />
       <ul className='metcasts-list'>
         {
           home.metcasts.map(item => {
-            return <li className='metcast' key={item._id}>
-              <div className='left-col'>
-                <img className='icon' src={item.images} alt={item.name} />
-              </div>
-              <div className='right-col'>
-                <div className='name'>{ item.name }</div>
-                <a className='link' href={`//${item.url}`}>{item.url}</a>
-                <div className='rating'>
-                  <div className='rating-icon' />
-                  <span className='rating-value'>{item.rating}</span>
-                </div>
-              </div>
-            </li>
+            return <Metcast key={item._id} item={item} vote={vote} removeVote={removeVote} user={home.user} />
           })
         }
       </ul>
@@ -52,7 +41,9 @@ Home.propTypes = {
   loginUser: PropTypes.func,
   registerUser: PropTypes.func,
   setUser: PropTypes.func,
-  signOut: PropTypes.func
+  signOut: PropTypes.func,
+  vote: PropTypes.func,
+  removeVote: PropTypes.func
 }
 
 export default Home

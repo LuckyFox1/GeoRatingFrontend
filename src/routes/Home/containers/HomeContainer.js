@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getMetcasts, loginUser, registerUser, showLogInForm, setUser, signOut } from '../actions'
+import { getMetcasts, loginUser, registerUser, showLogInForm, setUser, signOut, vote, removeVote } from '../actions'
 
 import Home from '../components/Home'
 
@@ -9,7 +9,9 @@ const mapDispatchToProps = {
   registerUser,
   showLogInForm,
   setUser,
-  signOut
+  signOut,
+  vote,
+  removeVote
 }
 
 const mapStateToProps = (state) => ({
