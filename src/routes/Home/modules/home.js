@@ -1,12 +1,5 @@
 import * as actionTypes from '../constants/actionTypes'
 
-// ------------------------------------
-// Actions
-// ------------------------------------
-
-// ------------------------------------
-// Action Handlers
-// ------------------------------------
 const ACTION_HANDLERS = {
   [actionTypes.SET_METCASTS]: (state, action) => {
     return {
@@ -31,15 +24,25 @@ const ACTION_HANDLERS = {
       ...state,
       showLoginForm: action.payload.show
     }
+  },
+  [actionTypes.SIGN_OUT]: (state) => {
+    return {
+      ...state,
+      user: null
+    }
   }
 }
 
-// ------------------------------------
-// Reducer
-// ------------------------------------
 const initialState = {
   loggedIn: false,
-  user: {},
+  user: null,
+  /*user: {
+    name: 'admin',
+    _id: '5c0eecfae74ec543a446eb1a',
+    password: '21232f297a57a5a743894a0e4a801fc3',
+    __v: 0,
+    likes: []
+  },*/
   showLoginForm: false,
   metcasts: []
 }

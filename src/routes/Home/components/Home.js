@@ -10,9 +10,9 @@ export class Home extends Component {
   }
 
   render () {
-    const { home, setUser } = this.props
+    const { home, setUser, signOut } = this.props
     return <div>
-      <Header loggedIn={home.loggedIn} showLogInForm={this.props.showLogInForm} />
+      <Header user={home.user} signOut={signOut} showLogInForm={this.props.showLogInForm} />
       <ul className='metcasts-list'>
         {
           home.metcasts.map(item => {
@@ -50,7 +50,9 @@ Home.propTypes = {
   home: PropTypes.object,
   showLogInForm: PropTypes.func,
   loginUser: PropTypes.func,
-  registerUser: PropTypes.func
+  registerUser: PropTypes.func,
+  setUser: PropTypes.func,
+  signOut: PropTypes.func
 }
 
 export default Home
