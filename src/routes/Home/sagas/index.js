@@ -1,22 +1,13 @@
 import { put, takeEvery, call, select } from 'redux-saga/effects'
 import * as actionTypes from '../constants/actionTypes'
-import { isLoggedIn, setMetcasts, setLike, removeLike } from '../actions'
+import { setMetcasts, setLike, removeLike } from '../actions'
 import { BASE_URL } from '../../../constants'
 import { getUser, getLike } from './selectors'
 
 function * getMetcasts () {
-  const resp = yield call(fetch, `/metcasts`, { method: 'GET' })
+  const resp = yield call(fetch, `${BASE_URL}/metcasts`, { method: 'GET' })
   const json = yield call([resp, 'json'])
   yield put(setMetcasts(json))
-}
-
-function * login (action) {
-  yield console.log(action)
-  yield put(isLoggedIn(true))
-}
-
-function * register (action) {
-  yield console.log(action)
 }
 
 function * vote (action) {
@@ -66,8 +57,6 @@ function * removeVote (action) {
 
 export default function * home () {
   yield takeEvery(actionTypes.GET_METCASTS, getMetcasts)
-  yield takeEvery(actionTypes.LOGIN_USER, login)
-  yield takeEvery(actionTypes.REGISTER_USER, register)
   yield takeEvery(actionTypes.VOTE, vote)
   yield takeEvery(actionTypes.REMOVE_VOTE, removeVote)
 }

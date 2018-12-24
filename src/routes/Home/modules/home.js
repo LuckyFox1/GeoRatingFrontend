@@ -67,12 +67,13 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   loggedIn: false,
-  user: null,
-  /*user: {
+  // user: null,
+  user: {
     name: 'admin',
     _id: '5c0eecfae74ec543a446eb1a',
     password: '21232f297a57a5a743894a0e4a801fc3',
     __v: 0,
+    roles: ['user', 'admin'],
     likes: [{
       __v: 0,
       isPositive: 5,
@@ -80,7 +81,7 @@ const initialState = {
       user_id: '5c0eecfae74ec543a446eb1a',
       _id: '5c1fc86b74be522998479a7c'
     }]
-  },*/
+  },
   showLoginForm: false,
   metcasts: []
 }

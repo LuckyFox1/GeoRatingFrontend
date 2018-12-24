@@ -1,16 +1,12 @@
-// ------------------------------------
-// Constants
-// ------------------------------------
+import * as actionTypes from '../constants/actionTypes'
 
-// ------------------------------------
-// Actions
-// ------------------------------------
-
-
-// ------------------------------------
-// Action Handlers
-// ------------------------------------
 const ACTION_HANDLERS = {
+  [actionTypes.SET_METCASTS_TO_ADMIN]: (state, action) => {
+    return {
+      ...state,
+      metcasts: action.payload.metcasts
+    }
+  }
 }
 
 // ------------------------------------
