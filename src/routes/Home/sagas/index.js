@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../constants'
 import { getUser, getLike } from './selectors'
 
 function * getMetcasts () {
-  const resp = yield call(fetch, `${BASE_URL}/metcasts`, { method: 'GET' })
+  const resp = yield call(fetch, `/metcasts`, { method: 'GET' })
   const json = yield call([resp, 'json'])
   yield put(setMetcasts(json))
 }
@@ -21,8 +21,7 @@ function * register (action) {
 
 function * vote (action) {
   const user = yield select(getUser)
-  const like = yield select()
-  /* const resp = yield call(fetch, `/like`, {
+  const resp = yield call(fetch, `/like`, {
     method: 'POST',
     body: JSON.stringify({
       like: {
@@ -34,8 +33,8 @@ function * vote (action) {
       'Content-Type': 'application/json'
     }
   })
-  const json = yield call([resp, 'json']) */
-  const json = {
+  const json = yield call([resp, 'json'])
+  /* const json = {
     like: {
       __v: 0,
       isPositive: 2,
@@ -44,7 +43,7 @@ function * vote (action) {
       _id: '5c1fc86b74be522998479a7c'
     },
     newRating: '4.5'
-  }
+  } */
   yield put(setLike(json.like, json.newRating))
   console.log(action.payload)
 }
@@ -53,14 +52,14 @@ function * removeVote (action) {
   const like = yield select(getLike, action.payload.metcastID)
   console.log('del', like)
   console.log('del', action.payload)
-  /* const resp = yield call(fetch, `/like/${like._id}/metcast/${action.payload.metcastID}`, {
+  const resp = yield call(fetch, `/like/${like._id}/metcast/${action.payload.metcastID}`, {
     method: 'DELETE'
   })
-  const json = yield call([resp, 'json']) */
-  const json = {
+  const json = yield call([resp, 'json'])
+  /* const json = {
     message: 'Like removed!',
     newRating: '1.0'
-  }
+  } */
   yield put(removeLike(action.payload.metcastID, json.newRating))
   // console.log(user._id)
 }

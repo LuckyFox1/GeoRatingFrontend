@@ -25,14 +25,17 @@ export class Header extends Component {
         {user
           ? <Link to='#' activeClassName='active' className='nav-item log-in' onClick={signOut}>Sign Out</Link>
           : ''}
-        {user ? <Link to='/admin' activeClassName='active' className='nav-item admin'>Admin</Link> : ''}
+        {user && user.roles.some(role => role === 'admin')
+          ? <Link to='/admin' activeClassName='active' className='nav-item admin'>Admin</Link> : ''}
       </div>
     </div>
   }
 }
 
 Header.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  signOut: PropTypes.func,
+  showLogInForm: PropTypes.func
 }
 
 export default Header
