@@ -7,12 +7,6 @@ const ACTION_HANDLERS = {
       metcasts: action.payload.metcasts
     }
   },
-  [actionTypes.IS_LOGGED_IN]: (state, action) => {
-    return {
-      ...state,
-      loggedIn: action.payload.loggedIn
-    }
-  },
   [actionTypes.SET_USER]: (state, action) => {
     return {
       ...state,
@@ -32,7 +26,6 @@ const ACTION_HANDLERS = {
     }
   },
   [actionTypes.SET_LIKE]: (state, action) => {
-    console.log(action.payload.like)
     return {
       ...state,
       metcasts: state.metcasts.map(item => {
@@ -51,7 +44,6 @@ const ACTION_HANDLERS = {
     }
   },
   [actionTypes.REMOVE_LIKE]: (state, action) => {
-    console.log(action.payload)
     return {
       ...state,
       metcasts: state.metcasts.map(item => {
@@ -66,22 +58,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
-  loggedIn: false,
-  // user: null,
-  user: {
-    name: 'admin',
-    _id: '5c0eecfae74ec543a446eb1a',
-    password: '21232f297a57a5a743894a0e4a801fc3',
-    __v: 0,
-    roles: ['user', 'admin'],
-    likes: [{
-      __v: 0,
-      isPositive: 5,
-      metcast_id: '5c0eece6e74ec543a446eb19',
-      user_id: '5c0eecfae74ec543a446eb1a',
-      _id: '5c1fc86b74be522998479a7c'
-    }]
-  },
+  user: null,
   showLoginForm: false,
   metcasts: []
 }

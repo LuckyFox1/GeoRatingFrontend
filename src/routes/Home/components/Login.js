@@ -51,7 +51,6 @@ class Login extends Component {
 
   render () {
     const { login, home, showLogInForm } = this.props
-    console.log(this.props)
     return <div className='overlay'>
       <div className='login-form-wrapper'>
         <button className='close-login-form' onClick={() => { showLogInForm(false) }} />

@@ -20,12 +20,37 @@ const ACTION_HANDLERS = {
       ...state,
       tab: action.payload.tabName
     }
+  },
+  [actionTypes.SET_METCAST]: (state, action) => {
+    return {
+      ...state,
+      metcasts: [...state.metcasts, action.payload.metcast],
+      tab: 'metcasts-list'
+    }
+  },
+  [actionTypes.CHANGE_METCAST]: (state, action) => {
+    return {
+      ...state,
+      metcasts: state.metcasts.map(item => {
+        return item._id === action.payload.metcast._id
+        ? {
+          ...item,
+          name: action.payload.metcast.name,
+          url: action.payload.metcast.url,
+          images: action.payload.metcast.images,
+          editing: false
+        } : { ...item }
+      })
+    }
+  },
+  [actionTypes.REMOVE_METCAST]: (state, action) => {
+    return {
+      ...state,
+      metcasts: state.metcasts.filter(item => item._id !== action.payload.metcastID)
+    }
   }
 }
 
-// ------------------------------------
-// Reducer
-// ------------------------------------
 const initialState = {
   tab: 'metcasts-list'
 }
