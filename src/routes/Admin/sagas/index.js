@@ -9,6 +9,11 @@ function * getMetcastsForAdmin () {
   yield put(setMetcastsToAdmin(json))
 }
 
+function * addMetcast (action) {
+  console.log(action.payload)
+}
+
 export default function * admin () {
   yield takeEvery(actionTypes.GET_METCASTS_FOR_ADMIN, getMetcastsForAdmin)
+  yield takeEvery(actionTypes.ADD_METCAST, addMetcast)
 }

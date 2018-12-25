@@ -6,13 +6,29 @@ const ACTION_HANDLERS = {
       ...state,
       metcasts: action.payload.metcasts
     }
+  },
+  [actionTypes.TOGGLE_EDIT_FORM]: (state, action) => {
+    return {
+      ...state,
+      metcasts: state.metcasts.map(item => {
+        return action.payload.metcastID === item._id ? { ...item, editing: action.payload.isEdit } : { ...item }
+      })
+    }
+  },
+  [actionTypes.CHANGE_TAB]: (state, action) => {
+    return {
+      ...state,
+      tab: action.payload.tabName
+    }
   }
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {}
+const initialState = {
+  tab: 'metcasts-list'
+}
 export default function adminReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 

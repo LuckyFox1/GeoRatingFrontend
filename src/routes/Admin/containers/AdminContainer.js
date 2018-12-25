@@ -1,12 +1,15 @@
 import { connect } from 'react-redux'
 import { signOut } from '../../Home/actions'
-import { getMetcastsForAdmin } from '../actions'
+import { getMetcastsForAdmin, toggleEditForm, addMetcast, changeTab } from '../actions'
 
 import Admin from '../components/Admin'
 
 const mapDispatchToProps = {
   signOut,
-  getMetcastsForAdmin
+  getMetcastsForAdmin,
+  toggleEditForm,
+  addMetcast,
+  changeTab
 }
 
 const mapStateToProps = (state) => ({
